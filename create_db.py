@@ -1,18 +1,20 @@
 import sqlite3
 
-# Connect to SQLite database
-conn = sqlite3.connect("users.db")
+# Connect to SQLite database (creates file if not exists)
+conn = sqlite3.connect("books.db")
+
 cursor = conn.cursor()
 
-# Create users table
+# Create table
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS users (
-    name TEXT,
-    email TEXT
+CREATE TABLE IF NOT EXISTS books (
+    title TEXT,
+    author TEXT,
+    published_year TEXT
 )
 """)
 
 conn.commit()
 conn.close()
 
-print("Users database and table created successfully")
+print("Database and table created successfully")
